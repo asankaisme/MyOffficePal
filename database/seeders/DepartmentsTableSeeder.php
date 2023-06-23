@@ -16,6 +16,10 @@ class DepartmentsTableSeeder extends Seeder
         //seed department data
         DB::table('departments')->insert([
             [
+                'depName' => 'SYSTEM',
+                'status' => 1,
+            ],
+            [
                 'depName' => 'ITD',
                 'status' => 1,
             ],

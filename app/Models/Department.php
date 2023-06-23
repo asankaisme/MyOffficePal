@@ -14,15 +14,16 @@ class Department extends Model
 
     protected $fillable = [
         'depName',
+        'isDeletable',
         'status'
     ];
 
-    public function lending(): HasMany
+    public function lendings(): HasMany
     {
         return $this->hasMany(Lending::class);
     }
 
-    public function user(): HasMany
+    public function users(): HasMany
     {
         return $this->hasMany(User::class);
     }

@@ -15,7 +15,7 @@ class DepartmentController extends Controller
      */
     public function index()
     {
-        $departments = DB::table('departments')->get();
+        $departments = DB::table('departments')->where('status', 1)->where('isDeletable', 2)->get();
         return view('department.index', compact('departments'));
     }
 
@@ -34,7 +34,7 @@ class DepartmentController extends Controller
     {
         try {
             $depName = Str::upper($request->depName);
-            $val1 = Department::where('depName', $depName)->get();
+            $val1 = Department::where('depName', $depName)->orderBy('depName', 'Asc')->get();
             //dd($val1);
             if($val1 == 0){
                 $success = Department::create([

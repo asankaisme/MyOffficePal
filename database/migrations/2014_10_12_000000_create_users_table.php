@@ -19,6 +19,9 @@ return new class extends Migration
             $table->string('password');
             $table->string('photoUrl')->nullable();
             $table->foreignId('role_id')->nullable()->constrained()->onUpdate('cascade')->onDelete('cascade');
+            $table->foreignId('department_id')->nullable()->constrained()->onUpdate('cascade')->onDelete('cascade');
+            $table->integer('isDeletable')->nullable()->default(2); //2 is for deletable users
+            $table->integer('status')->nullable()->default(1); //1 is for active users and 2 is for inactive users
             $table->rememberToken();
             $table->timestamps();
         });

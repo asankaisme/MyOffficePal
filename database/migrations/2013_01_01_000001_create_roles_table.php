@@ -15,6 +15,7 @@ return new class extends Migration
             $table->id();
             $table->timestamps();
             $table->string('role')->nullable();
+            $table->integer('isDeletable')->nullable()->default(1); //1 is for not deletable and 2 is for deletable records
             $table->integer('status')->default(1);
         });
     }
