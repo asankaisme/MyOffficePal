@@ -33,17 +33,18 @@ class DepartmentController extends Controller
     public function store(Request $request)
     {
         try {
+            $data = $request->validate([
+                'depName' => 'required| min:3'
+            ]);
+
             $depName = Str::upper($request->depName);
             $val1 = Department::where('depName', $depName)->orderBy('depName', 'Asc')->get();
             //dd($val1);
             if($val1 == 0){
-                $success = Department::create([
-                    'depName' => $depName,
-                    'status' => 1,
-                ]);
-                return redirect('departments.index');
+                $success = Department::create($data);
+                return redirect(route('departments.index'));
             }else{
-                return redirect('departments.index');
+                return redirect(route('departments.index'));
             }
             
         } catch (\Throwable $th) {
